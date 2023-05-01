@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>876212118085-3pklfmq7fk24chm10i2qrvalhjqpkj63.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.876212118085-3pklfmq7fk24chm10i2qrvalhjqpkj63</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCVlQ3MkUEF36W3UnabiRupVLBtiG2uOgg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>876212118085</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.app.nickaviApp</string>
+	<key>PROJECT_ID</key>
+	<string>nickavi-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nickavi-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:876212118085:ios:aed5193d5356f1b877392c</string>
+</dict>
+</plist>
