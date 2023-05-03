@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../res/common/button_common.dart';
 import '../../res/common/textfeild_common.dart';
 import '../../res/constant/nikavi_strings.dart';
+import '../Home/Home_screen.dart';
 import '../signup/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -89,22 +90,37 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.045,
-              width: MediaQuery.of(context).size.width * 0.9,
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                color: Color(0xFFF6485A),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
+            GestureDetector(
+              onTap: () {
+                if (validator()) {
+                  debugPrint("succesfully login");
+                } else {
+                  userSignup();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                }
+              },
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.045,
+                width: MediaQuery.of(context).size.width * 0.9,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  color: Color(0xFFF6485A),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(5),
+                  ),
                 ),
-              ),
-              child: const Text(
-                NikaviString.login,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
+                child: const Text(
+                  NikaviString.login,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
@@ -172,7 +188,15 @@ class _LoginScreenState extends State<LoginScreen> {
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             GestureDetector(
-              onTap: googleSignin,
+              onTap: () {
+                googleSignin();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
+                  ),
+                );
+              },
               child: const ButtonCommon(
                 text: NikaviString.gog,
                 image: NikaviString.google,
@@ -286,5 +310,53 @@ class _LoginScreenState extends State<LoginScreen> {
       idToken: googleAuth?.idToken,
     );
     return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  dialog() {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        child: Container(
+          height: 150,
+          width: 150,
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(30),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  "your email hasn't verified\n if you want to verified your email then press re-send button",
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Cancel"),
+                    ),
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: () {
+                        user!.sendEmailVerification();
+                        setState(() {});
+                      },
+                      child: const Text("Re-Send"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
