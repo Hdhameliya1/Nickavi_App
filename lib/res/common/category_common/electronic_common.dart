@@ -2,39 +2,57 @@ import 'package:flutter/material.dart';
 
 import '../../constant/nikavi_strings.dart';
 
-class ShoesScreen extends StatelessWidget {
+class ElectronicCommon extends StatelessWidget {
   final String? image;
   final String? text;
   final String? price;
-  const ShoesScreen({Key? key, this.image, this.text, this.price})
+  const ElectronicCommon({Key? key, this.image, this.text, this.price})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.35,
-      width: MediaQuery.of(context).size.width * 0.6,
+      height: MediaQuery.of(context).size.height * 0.3,
+      width: MediaQuery.of(context).size.width * 0.4,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(15),
         ),
       ),
-      child: Stack(
+      child: Column(
         children: [
-          Image.asset(image!),
-          Padding(
-            padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.01,
-                left: MediaQuery.of(context).size.width * 0.02),
-            child: Image.asset(NikaviString.heart),
+          Stack(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.width * 0.4,
+                decoration: const BoxDecoration(
+                  color: Color(0xFFF6485A),
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      topLeft: Radius.circular(15)),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.03,
+                    left: MediaQuery.of(context).size.width * 0.034),
+                child: Image.asset(image!),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.01,
+                    left: MediaQuery.of(context).size.width * 0.02),
+                child: Image.asset(NikaviString.heart),
+              ),
+            ],
           ),
           Padding(
             padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.17,
+                top: MediaQuery.of(context).size.height * 0.02,
                 left: MediaQuery.of(context).size.width * 0.03),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -45,6 +63,9 @@ class ShoesScreen extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.015,
+                ),
                 Text(
                   price!,
                   style: const TextStyle(
@@ -53,13 +74,8 @@ class ShoesScreen extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                const Text(
-                  NikaviString.sit,
-                  style: TextStyle(
-                    color: Color(0xB3000000),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                  ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.015,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -67,14 +83,6 @@ class ShoesScreen extends StatelessWidget {
                     Image.asset(NikaviString.star),
                     const Text(
                       NikaviString.review,
-                      style: TextStyle(
-                        color: Color(0xFF3A3A3A),
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                      ),
-                    ),
-                    const Text(
-                      NikaviString.category,
                       style: TextStyle(
                         color: Color(0xFF3A3A3A),
                         fontWeight: FontWeight.w400,
